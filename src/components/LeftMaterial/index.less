@@ -1,0 +1,48 @@
+.left-material {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  .header {
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    color: #0067ed;
+    border-bottom: 1px solid #f1e8e8;
+    padding-left: 15px;
+    color: #e0e0e4;
+  }
+  .cantanier {
+    overflow: hidden;
+    height: calc(100vh - 41px);
+    font-size: 14px;
+    padding: 0 10px;
+    border-right: 1px solid #f1e8e8;
+    .material-title {
+      height: 20px;
+      line-height: 20px;
+      font-size: 14px;
+      margin-top: 15px;
+      .icon {
+        margin-right: 8px;
+      }
+    }
+    .material-catianer {
+      display: flex;
+      .item {
+        width: 48%;
+        margin: 1%;
+        font-size: 12px;
+        padding: 8px 10px;
+        background: #f6f7ff;
+        border-radius: 3px;
+        border: 1px dashed #f6f7ff;
+        cursor: pointer;
+        &:hover {
+          color: #a49cd6;
+        }
+      }
+    }
+  }
+}
