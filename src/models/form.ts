@@ -1,14 +1,20 @@
+import { FormSchema } from '../schema/config';
 export const form = {
-  state: [],
+  state: {
+    formSchema: FormSchema,
+    children: [],
+  },
   // 同步改变state
   reducers: {
     // 向formList中添加一个item
     addFormItem(state: any, payload: any) {
-      return [...state, payload];
+      state.children = [...state.children, payload];
+      return { ...state };
     },
     // 重新排序formList
     refreshFormList(state: any, payload: any) {
-      return [...payload];
+      state.children = [...payload];
+      return { ...state };
     },
   },
   // 异步改变state

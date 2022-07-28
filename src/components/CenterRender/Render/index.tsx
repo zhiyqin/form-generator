@@ -1,17 +1,12 @@
 import { Form, Input } from 'antd';
 
-function RenderItem(itemProps: any) {
-  const { schema = {} } = itemProps;
+function RenderItem(props: any) {
+  const { schema = {} } = props;
+  const { itemSchem, componentSchema } = schema;
   console.log('schema', schema);
-  const { componentProps, rules, _selfConfig_ } = schema;
   return (
-    <Form.Item
-      label={_selfConfig_.label}
-      required={_selfConfig_.required}
-      name="username"
-      rules={[...rules.regList]}
-    >
-      <Input {...componentProps} />
+    <Form.Item {...itemSchem}>
+      <Input {...componentSchema} />
     </Form.Item>
   );
 }

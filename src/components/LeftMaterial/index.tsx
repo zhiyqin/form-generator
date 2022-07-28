@@ -7,7 +7,10 @@ import { useDispatch } from '@/models';
 function LeftMaterial() {
   const { form } = useDispatch();
   const handleAddMaterial = (item: any) => {
-    item.name = uuidv4();
+    item.itemSchem = {
+      ...item.itemSchem,
+      name: uuidv4(),
+    };
     form.addFormItem({ ...item });
   };
   return (
@@ -28,7 +31,7 @@ function LeftMaterial() {
                   className="item"
                   onClick={() => handleAddMaterial(item)}
                 >
-                  {item._selfConfig_.label}
+                  {item.itemSchem.label}
                 </div>
               );
             })}

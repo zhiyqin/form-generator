@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from '@/models';
 
 function CenterRender() {
   const { form } = useSelector(state => state);
+  const { formSchema, children } = form;
   const {
     form: { refreshFormList },
   } = useDispatch();
@@ -40,7 +41,7 @@ function CenterRender() {
   return (
     <div className="center-render">
       <Header />
-      <Form className="render-container">
+      <Form className="render-container" {...formSchema}>
         {/* <Apps /> */}
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="droppable">
@@ -51,7 +52,7 @@ function CenterRender() {
                 ref={provided.innerRef}
                 style={getListStyle()}
               >
-                {form?.map((item: any, index: number) => (
+                {children?.map((item: any, index: number) => (
                   <Draggable
                     isDragDisabled={false}
                     // eslint-disable-next-line react/no-array-index-key
