@@ -1,12 +1,14 @@
 import './index.less';
 import { PartitionOutlined } from '@ant-design/icons';
+import { v4 as uuidv4 } from 'uuid';
 import { inputComponents } from '@/schema/config';
 import { useDispatch } from '@/models';
 
 function LeftMaterial() {
   const { form } = useDispatch();
   const handleAddMaterial = (item: any) => {
-    form.addFormItem(item);
+    item.name = uuidv4();
+    form.addFormItem({ ...item });
   };
   return (
     <div className="left-material">
@@ -21,6 +23,7 @@ function LeftMaterial() {
             {inputComponents.map((item, index) => {
               return (
                 <div
+                  // eslint-disable-next-line react/no-array-index-key
                   key={index}
                   className="item"
                   onClick={() => handleAddMaterial(item)}

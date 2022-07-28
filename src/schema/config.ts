@@ -1,6 +1,7 @@
 // 输入型组件左侧面板
 export const inputComponents = [
   {
+    name: null, // 唯一标识
     // 自定义配置的属性
     _selfConfig_: {
       label: '单行文本',
@@ -16,15 +17,15 @@ export const inputComponents = [
       regList: [],
     },
     // 直接写在组件标签上的属性
-    props: {
+    componentProps: {
       placeholder: '请输入',
       style: { width: '100%' },
-      clearable: true,
-      'prefix-icon': '',
-      'suffix-icon': '',
-      maxlength: null,
-      'show-word-limit': false,
-      readonly: false,
+      allowClear: true,
+      prefix: '', // 前缀图标
+      suffix: '', // 后缀图标
+      maxLength: null,
+      showCount: false,
+      readOnly: false,
       disabled: false,
     },
   },
@@ -44,7 +45,7 @@ export const inputComponents = [
       regList: [],
     },
     // 直接写在组件标签上的属性
-    props: {
+    componentProps: {
       placeholder: '请输入',
       style: { width: '100%' },
       clearable: true,
