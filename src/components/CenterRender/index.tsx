@@ -8,20 +8,15 @@ import { useSelector, useDispatch } from '@/models';
 
 function CenterRender() {
   const { form } = useSelector(state => state);
-  const { formSchema, children } = form;
+  const { formSchema, children, currentSelected } = form;
   const {
-    form: { refreshFormList },
+    form: { refreshFormList, setSelectedItem },
   } = useDispatch();
   const getItemStyle = (_isDragging: boolean, draggableStyle: any) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: 'none',
     padding: 8 * 2,
     margin: `0 0 8px 0`,
-
-    // change background colour if dragging
-    // background: isDragging ? '#f6f7ff' : '#fff',
-
-    // styles we need to apply on draggables
     ...draggableStyle,
   });
 
@@ -35,7 +30,11 @@ function CenterRender() {
       return;
     }
     // 对数据进行新的排序
-    const items = reorder(form, result.source.index, result.destination.index);
+    const items = reorder(
+      children,
+      result.source.index,
+      result.destination.index,
+    );
     refreshFormList(items);
   };
   return (
@@ -62,7 +61,9 @@ function CenterRender() {
                   >
                     {(provided, snapshot) => (
                       <div
-                        className="graggable-item"
+                        className={`graggable-item ${
+                          currentSelected === index ? 'graggable-selected' : ''
+                        }`}
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
@@ -70,6 +71,7 @@ function CenterRender() {
                           snapshot.isDragging,
                           provided.draggableProps.style,
                         )}
+                        onClick={() => setSelectedItem(index)}
                       >
                         <RenderItem schema={item} />
                       </div>

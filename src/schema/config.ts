@@ -4,6 +4,7 @@ export const FormSchema = {
   disabled: false, // 表单是否禁用
   size: '', // 表单尺寸
   layout: '表单布局',
+  labelAlign: 'right', // 标签对齐方式
   // initialValues: {},
 };
 
@@ -14,18 +15,16 @@ export const inputComponents = [
     itemSchem: {
       name: null, // 字段名
       label: '单行文本',
-      labelAlign: 'right', // 标签对齐方式
       required: true,
       rules: [],
-      initialvalues: '', // 表单默认值
+      // initialvalues: '', // 表单默认值
     },
     _selfConfig_: {
       changeTag: true, // 左侧面板可以替换当前组件的类型
       tag: 'Input',
-      defaultValue: undefined,
     },
     // 直接写在组件标签上的属性
-    componentSchema: {
+    controlSchema: {
       placeholder: '请输入',
       style: { width: '100%' },
       allowClear: true,

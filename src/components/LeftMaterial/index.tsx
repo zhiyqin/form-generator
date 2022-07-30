@@ -3,6 +3,7 @@ import { PartitionOutlined } from '@ant-design/icons';
 import { v4 as uuidv4 } from 'uuid';
 import { inputComponents } from '@/schema/config';
 import { useDispatch } from '@/models';
+import { cloneDeep } from 'lodash';
 
 function LeftMaterial() {
   const { form } = useDispatch();
@@ -11,7 +12,7 @@ function LeftMaterial() {
       ...item.itemSchem,
       name: uuidv4(),
     };
-    form.addFormItem({ ...item });
+    form.addFormItem(cloneDeep(item));
   };
   return (
     <div className="left-material">
