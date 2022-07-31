@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from '@/models';
 import { Button, Checkbox, Form, Input, Select, Radio } from 'antd';
 import { useEffect } from 'react';
 
-function RightPanel() {
+function SetComponent() {
   const {
     form: { children, currentSelected },
   } = useSelector(state => state);
@@ -37,11 +37,9 @@ function RightPanel() {
   };
   return (
     <div>
-      {children.length && (
-        <div className="right-panel">
-          <div className="header">组件属性修改</div>
+      {children.length > 0 && (
+        <div className="set-component">
           <div className="container">
-            <div className="title">设置表单字段属性</div>
             <Form
               colon={false}
               labelAlign="right"
@@ -84,6 +82,12 @@ function RightPanel() {
                 <Input />
               </Form.Item>
               <Form.Item label="内容最大长度" name="maxLength">
+                <Input type="number" />
+              </Form.Item>
+              <Form.Item label="前缀" name="prefix">
+                <Input />
+              </Form.Item>
+              <Form.Item label="后缀" name="suffix">
                 <Input />
               </Form.Item>
               <Form.Item label="能否清空" name="allowClear">
@@ -118,4 +122,4 @@ function RightPanel() {
   );
 }
 
-export default RightPanel;
+export default SetComponent;

@@ -1,10 +1,17 @@
 // 整体form的属性设置
 export const FormSchema = {
-  colon: true, // 是否现实冒号
+  colon: true, // 是否显示冒号
   disabled: false, // 表单是否禁用
   size: '', // 表单尺寸
-  layout: '表单布局',
+  layout: 'horizontal',
   labelAlign: 'right', // 标签对齐方式
+  labelWrap: false,
+  name: 'antd-form',
+  labelCol: null,
+  onFieldsChange: null,
+  onFinish: null,
+  onFinishFailed: null,
+  onValuesChange: null,
   // initialValues: {},
 };
 

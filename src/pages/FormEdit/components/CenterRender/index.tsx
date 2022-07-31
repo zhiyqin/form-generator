@@ -1,7 +1,7 @@
 import './index.less';
 import { Form } from 'antd';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import Header from './Header';
+import Header from '../Header';
 import RenderItem from './Render';
 import { reorder } from './utils';
 import { useSelector, useDispatch } from '@/models';
@@ -22,7 +22,7 @@ function CenterRender() {
 
   const getListStyle = () => ({
     padding: 8,
-    width: '100%',
+    // width: '100%',
   });
   const onDragEnd = (result: any) => {
     // 拖到拖拽框之外
