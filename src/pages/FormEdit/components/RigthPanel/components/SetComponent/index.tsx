@@ -1,7 +1,8 @@
 import './index.less';
 import { useSelector, useDispatch } from '@/models';
-import { Button, Checkbox, Form, Input, Select, Radio } from 'antd';
-import { useEffect } from 'react';
+import { Form, Input, Radio } from 'antd';
+import { useEffect, useState } from 'react';
+import AddRule from '../AddRule';
 
 function SetComponent() {
   const {
@@ -23,21 +24,27 @@ function SetComponent() {
     formScope.setFieldsValue({ ...itemSchem });
     formcontrol.setFieldsValue({ ...controlSchema });
   };
-  const onFieldsChanged = (changedFields: any, type: string) => {
-    const result = (current as any)[type];
-    // 要修改的字段是那个
-    const key = changedFields[0]?.name[0];
-    const value = changedFields[0].value;
-    if (result) {
-      result[key] = value;
+  const onFieldsChanged = (fields: any, type: string) => {
+    if (type === 'rules') {
+      Object.assign(current, { rules: [...fields] });
+      children.splice(currentSelected, 1, current);
+      return refreshFormList(children);
+    } else {
+      const result = (current as any)[type];
+      // 要修改的字段是那个
+      const key = fields[0]?.name[0];
+      const value = fields[0]?.value;
+      if (result) {
+        result[key] = value;
+      }
+      Object.assign(current, { [type]: result });
+      children.splice(currentSelected, 1, current);
+      refreshFormList(children);
     }
-    Object.assign(current, { [type]: result });
-    children.splice(currentSelected, 1, current);
-    refreshFormList(children);
   };
   return (
     <div>
-      {children.length > 0 && (
+      {children && (
         <div className="set-component">
           <div className="container">
             <Form
@@ -65,6 +72,8 @@ function SetComponent() {
                 </Radio.Group>
               </Form.Item>
             </Form>
+            <div className="title">正则校验</div>
+            <AddRule setItemRules={onFieldsChanged} />
             <div className="title">设置控件属性</div>
             <Form
               colon={false}

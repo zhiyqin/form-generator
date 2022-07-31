@@ -25,7 +25,7 @@ const ShowJson = (props: any) => {
   };
   return (
     <Drawer
-      title="查看JSON"
+      title="查看JSON并支持修改"
       placement="right"
       width={'50%'}
       onClose={onClose}
@@ -40,7 +40,7 @@ const ShowJson = (props: any) => {
       }
     >
       <MonacoEditor
-        width="500px"
+        width="100vw"
         height={window.innerHeight - 16}
         language="typescript"
         theme="vs-dark"

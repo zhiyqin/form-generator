@@ -23,9 +23,9 @@ export const inputComponents = [
       name: null, // 字段名
       label: '单行文本',
       required: true,
-      rules: [],
       // initialvalues: '', // 表单默认值
     },
+    rules: [],
     _selfConfig_: {
       changeTag: true, // 左侧面板可以替换当前组件的类型
       tag: 'Input',

@@ -5,6 +5,13 @@ const PreviewDraw = (props: any) => {
   const { showPreview, onClose } = props;
   const { form } = useSelector(state => state);
   const { formSchema, children } = form;
+  const onFinishs = (values: any) => {
+    console.log('Success:', values, form);
+  };
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
+  };
   return (
     <Drawer
       title="预览表单"
@@ -21,10 +28,15 @@ const PreviewDraw = (props: any) => {
         </Space>
       }
     >
-      <Form className="render-container" {...formSchema}>
+      <Form className="render-container" {...formSchema} onFinish={onFinishs}>
         {children?.map((item: any, index: number) => (
           <RenderItem schema={item} key={index} />
         ))}
+        <Form.Item wrapperCol={{ span: 12, offset: 6 }}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
       </Form>
     </Drawer>
   );
