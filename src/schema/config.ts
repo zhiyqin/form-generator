@@ -26,10 +26,7 @@ export const inputComponents = [
       // initialvalues: '', // 表单默认值
     },
     rules: [],
-    _selfConfig_: {
-      changeTag: true, // 左侧面板可以替换当前组件的类型
-      tag: 'Input',
-    },
+    tag: 'Input',
     // 直接写在组件标签上的属性
     controlSchema: {
       placeholder: '请输入',
@@ -42,5 +39,53 @@ export const inputComponents = [
       readOnly: false,
       disabled: false,
     },
+  },
+];
+
+// 选择型组件
+export const SelectComponent = [
+  {
+    itemSchem: {
+      name: null,
+      label: '单选组件',
+      required: true,
+    },
+    tag: 'RadioGroup',
+    rules: [],
+    controlSchema: {
+      options: [
+        {
+          label: '选项一',
+          value: 1,
+        },
+        {
+          label: '选项二',
+          value: 2,
+        },
+      ],
+      buttonStyle: 'outline',
+    },
+  },
+];
+
+// 布局型组件
+export const LayoutComponents = [
+  {
+    // 组件本身的属性
+    controlSchema: {
+      type: '', // 按钮类型
+      shape: '', // 形状
+      size: '', // 大小
+    },
+    itemSchem: {
+      name: null,
+      label: '表单按钮',
+    },
+    tag: 'Button',
+    // 事件
+    eventProps: {
+      onClick: 'console.log(111)',
+    },
+    children: 'default',
   },
 ];

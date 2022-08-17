@@ -1,8 +1,10 @@
 import './index.less';
 import { useSelector, useDispatch } from '@/models';
 import { Form, Input, Radio } from 'antd';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import AddRule from '../AddRule';
+import RenderForm from '@/components/renderFrom';
+import { InputTypeProps, FormCommonProps } from '@/schema/propsConfig';
 
 function SetComponent() {
   const {
@@ -44,34 +46,17 @@ function SetComponent() {
   };
   return (
     <div>
-      {children && (
+      {children.length > 0 && (
         <div className="set-component">
           <div className="container">
-            <Form
-              colon={false}
-              labelAlign="right"
-              labelCol={{
-                span: 6,
-              }}
+            <RenderForm
+              formSchema={FormCommonProps}
               form={formScope}
-              labelWrap
               onFieldsChange={(changedFields: any) => {
                 onFieldsChanged(changedFields, 'itemSchem');
               }}
-            >
-              <Form.Item label="字段名" name="name">
-                <Input />
-              </Form.Item>
-              <Form.Item label="标题" name="label">
-                <Input />
-              </Form.Item>
-              <Form.Item label="是否必填" name="required">
-                <Radio.Group>
-                  <Radio value={true}>是</Radio>
-                  <Radio value={false}>否</Radio>
-                </Radio.Group>
-              </Form.Item>
-            </Form>
+              itemConfig={InputTypeProps}
+            />
             <div className="title">正则校验</div>
             <AddRule setItemRules={onFieldsChanged} />
             <div className="title">设置控件属性</div>
@@ -87,6 +72,10 @@ function SetComponent() {
                 onFieldsChanged(changedFields, 'controlSchema');
               }}
             >
+              {/* TODO: delete */}
+              <Form.Item label="绑定事件" name="placeholder">
+                <Input />
+              </Form.Item>
               <Form.Item label="占位提示" name="placeholder">
                 <Input />
               </Form.Item>

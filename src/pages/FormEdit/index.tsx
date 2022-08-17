@@ -1,6 +1,6 @@
-import CenterRender from './components/CenterRender';
-import RightPanel from './components/RigthPanel';
-import LeftMaterial from './components/LeftMaterial';
+import CenterRender from './CenterRender';
+import RightPanel from './RigthPanel';
+import LeftMaterial from './LeftMaterial';
 import { Provider } from 'react-redux';
 import store from '@/models';
 

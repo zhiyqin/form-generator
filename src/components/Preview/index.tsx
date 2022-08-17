@@ -1,6 +1,6 @@
 import { Button, Drawer, Space, Form } from 'antd';
-import { useSelector, useDispatch } from '@/models';
-import RenderItem from '@/pages/FormEdit/components/CenterRender/Render';
+import { useSelector } from '@/models';
+import RenderForm from '../renderFrom';
 const PreviewDraw = (props: any) => {
   const { showPreview, onClose } = props;
   const { form } = useSelector(state => state);
@@ -28,16 +28,18 @@ const PreviewDraw = (props: any) => {
         </Space>
       }
     >
-      <Form className="render-container" {...formSchema} onFinish={onFinishs}>
-        {children?.map((item: any, index: number) => (
-          <RenderItem schema={item} key={index} />
-        ))}
+      <RenderForm
+        className="render-container"
+        onFinish={onFinishs}
+        formSchema={formSchema}
+        itemConfig={children}
+      >
         <Form.Item wrapperCol={{ span: 12, offset: 6 }}>
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
         </Form.Item>
-      </Form>
+      </RenderForm>
     </Drawer>
   );
 };

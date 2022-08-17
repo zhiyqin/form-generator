@@ -2,8 +2,8 @@ import './index.less';
 import { Form } from 'antd';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import Header from '../Header';
-import RenderItem from './Render';
-import { reorder } from './utils';
+import RenderItem from '@/components/renderFrom/renderItem';
+import { reorder } from '@/utils';
 import { useSelector, useDispatch } from '@/models';
 
 function CenterRender() {
